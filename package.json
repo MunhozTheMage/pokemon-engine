@@ -1,0 +1,21 @@
+{
+  "name": "pokemon-engine",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@pkmn/dex": "^0.9.24",
+    "@pkmn/randoms": "^0.9.24",
+    "@pkmn/sets": "^5.1.2",
+    "@pkmn/sim": "^0.9.24"
+  }
+}

@@ -1,0 +1,24 @@
+All Configs:
+
+Nickname (Species) (F or M) @ Held Item
+Ability: Ability Name
+Level: X 
+Shiny: Yes or No
+Happiness: X 
+Hidden Power: Type Name  
+Tera Type: Type Name
+EVs: X HP / X Atk / X Def / X SpA / X SpD / X Spe  
+Nature Name Nature  
+IVs: X HP / X Atk / X Def / X SpA / X SpD / X Spe  
+- Move1  
+- Move2
+- Move3
+- Move4
+
+------------------------------
+
+Minimal Configs
+
+Species  
+Ability: Ability Name
+- Move1

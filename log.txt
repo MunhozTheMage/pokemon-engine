@@ -1,0 +1,275 @@
+>start {"formatid":"gen9nationaldex"}
+>player p1 {"name":"Sakura","team":"Charmander|||SolarPower|Ember,Protect,Tackle,SunnyDay||1,,,,,||||1|,,,,,Dragon]Squirtle|||RainDish|Bubble,Protect,RainDance,Tackle||1,,,,,||||1|,,,,,Dragon"}
+>player p2 {"name":"Kuro","team":"Squirtle|||RainDish|Bubble,Protect,RainDance,Tackle||1,,,,,||||1|,,,,,Dragon]Charmander|||SolarPower|Ember,Protect,Tackle,SunnyDay||1,,,,,||||1|,,,,,Dragon"}
+|t:|1733767940
+|gametype|singles
+|player|p1|Sakura||
+|player|p2|Kuro||
+|teamsize|p1|2
+|teamsize|p2|2
+|gen|9
+|tier|[Gen 9] National Dex
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Evasion Clause: Evasion abilities, items, and moves are banned
+|rule|Evasion Abilities Clause: Evasion abilities are banned
+|rule|Evasion Items Clause: Evasion items are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Species Clause: Limit one of each Pokémon
+|rule|Sleep Clause Mod: Limit one foe put to sleep
+|rule|Terastal Clause: You cannot Terastallize
+|clearpoke
+|poke|p1|Charmander, L1, F|
+|poke|p1|Squirtle, L1, M|
+|poke|p2|Squirtle, L1, M|
+|poke|p2|Charmander, L1, M|
+|teampreview
+|
+|t:|1733767940
+|start
+|switch|p1a: Charmander|Charmander, L1, F|12/12
+|switch|p2a: Squirtle|Squirtle, L1, M|12/12
+|turn|1
+|
+|t:|1733767940
+|move|p1a: Charmander|Protect|p1a: Charmander
+|-singleturn|p1a: Charmander|Protect
+|move|p2a: Squirtle|Tackle|p1a: Charmander
+|-activate|p1a: Charmander|move: Protect
+|
+|upkeep
+|turn|2
+|
+|t:|1733767940
+|move|p2a: Squirtle|Tackle|p1a: Charmander
+|-damage|p1a: Charmander|10/12
+|move|p1a: Charmander|Sunny Day|p1a: Charmander
+|-weather|SunnyDay
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p1a: Charmander|9/12|[from] ability: Solar Power|[of] p1a: Charmander
+|upkeep
+|turn|3
+|
+|t:|1733767940
+|move|p2a: Squirtle|Rain Dance|p2a: Squirtle
+|-weather|RainDance
+|move|p1a: Charmander|Tackle|p2a: Squirtle
+|-damage|p2a: Squirtle|10/12
+|
+|-weather|RainDance|[upkeep]
+|-heal|p2a: Squirtle|11/12|[from] ability: Rain Dish
+|upkeep
+|turn|4
+|
+|t:|1733767940
+|move|p2a: Squirtle|Protect|p2a: Squirtle
+|-singleturn|p2a: Squirtle|Protect
+|move|p1a: Charmander|Sunny Day|p1a: Charmander
+|-weather|SunnyDay
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p1a: Charmander|8/12|[from] ability: Solar Power|[of] p1a: Charmander
+|upkeep
+|turn|5
+|
+|t:|1733767940
+|move|p1a: Charmander|Tackle|p2a: Squirtle
+|-damage|p2a: Squirtle|9/12
+|move|p2a: Squirtle|Bubble|p1a: Charmander
+|-supereffective|p1a: Charmander
+|-damage|p1a: Charmander|7/12
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p1a: Charmander|6/12|[from] ability: Solar Power|[of] p1a: Charmander
+|upkeep
+|turn|6
+|
+|t:|1733767940
+|move|p1a: Charmander|Ember|p2a: Squirtle
+|-resisted|p2a: Squirtle
+|-damage|p2a: Squirtle|6/12
+|move|p2a: Squirtle|Tackle|p1a: Charmander
+|-crit|p1a: Charmander
+|-damage|p1a: Charmander|2/12
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p1a: Charmander|1/12|[from] ability: Solar Power|[of] p1a: Charmander
+|upkeep
+|turn|7
+|
+|t:|1733767940
+|move|p2a: Squirtle|Tackle|p1a: Charmander
+|-damage|p1a: Charmander|0 fnt
+|faint|p1a: Charmander
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|
+|t:|1733767940
+|switch|p1a: Squirtle|Squirtle, L1, M|12/12
+|turn|8
+|
+|t:|1733767940
+|move|p2a: Squirtle|Protect|p2a: Squirtle
+|-singleturn|p2a: Squirtle|Protect
+|move|p1a: Squirtle|Tackle|p2a: Squirtle
+|-activate|p2a: Squirtle|move: Protect
+|
+|-weather|none
+|upkeep
+|turn|9
+|
+|t:|1733767940
+|move|p1a: Squirtle|Tackle|p2a: Squirtle
+|-damage|p2a: Squirtle|4/12
+|move|p2a: Squirtle|Bubble|p1a: Squirtle
+|-resisted|p1a: Squirtle
+|-damage|p1a: Squirtle|11/12
+|
+|upkeep
+|turn|10
+|
+|t:|1733767940
+|move|p2a: Squirtle|Bubble|p1a: Squirtle
+|-resisted|p1a: Squirtle
+|-damage|p1a: Squirtle|10/12
+|move|p1a: Squirtle|Tackle|p2a: Squirtle
+|-damage|p2a: Squirtle|2/12
+|
+|upkeep
+|turn|11
+|
+|t:|1733767940
+|move|p1a: Squirtle|Tackle|p2a: Squirtle
+|-damage|p2a: Squirtle|0 fnt
+|faint|p2a: Squirtle
+|
+|upkeep
+|
+|t:|1733767940
+|switch|p2a: Charmander|Charmander, L1, M|12/12
+|turn|12
+|
+|t:|1733767940
+|move|p1a: Squirtle|Rain Dance|p1a: Squirtle
+|-weather|RainDance
+|move|p2a: Charmander|Tackle|p1a: Squirtle
+|-damage|p1a: Squirtle|8/12
+|
+|-weather|RainDance|[upkeep]
+|-heal|p1a: Squirtle|9/12|[from] ability: Rain Dish
+|upkeep
+|turn|13
+|
+|t:|1733767940
+|move|p1a: Squirtle|Protect|p1a: Squirtle
+|-singleturn|p1a: Squirtle|Protect
+|move|p2a: Charmander|Sunny Day|p2a: Charmander
+|-weather|SunnyDay
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Charmander|11/12|[from] ability: Solar Power|[of] p2a: Charmander
+|upkeep
+|turn|14
+|
+|t:|1733767940
+|move|p1a: Squirtle|Rain Dance|p1a: Squirtle
+|-weather|RainDance
+|move|p2a: Charmander|Sunny Day|p2a: Charmander
+|-weather|SunnyDay
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Charmander|10/12|[from] ability: Solar Power|[of] p2a: Charmander
+|upkeep
+|turn|15
+|
+|t:|1733767940
+|move|p2a: Charmander|Protect|p2a: Charmander
+|-singleturn|p2a: Charmander|Protect
+|move|p1a: Squirtle|Protect||[still]
+|-fail|p1a: Squirtle
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Charmander|9/12|[from] ability: Solar Power|[of] p2a: Charmander
+|upkeep
+|turn|16
+|
+|t:|1733767940
+|move|p1a: Squirtle|Protect|p1a: Squirtle
+|-singleturn|p1a: Squirtle|Protect
+|move|p2a: Charmander|Sunny Day||[still]
+|-fail|p2a: Charmander
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Charmander|8/12|[from] ability: Solar Power|[of] p2a: Charmander
+|upkeep
+|turn|17
+|
+|t:|1733767940
+|move|p1a: Squirtle|Bubble|p2a: Charmander
+|-supereffective|p2a: Charmander
+|-damage|p2a: Charmander|7/12
+|move|p2a: Charmander|Tackle|p1a: Squirtle
+|-damage|p1a: Squirtle|7/12
+|
+|-weather|SunnyDay|[upkeep]
+|-damage|p2a: Charmander|6/12|[from] ability: Solar Power|[of] p2a: Charmander
+|upkeep
+|turn|18
+|
+|t:|1733767940
+|move|p2a: Charmander|Ember|p1a: Squirtle
+|-resisted|p1a: Squirtle
+|-damage|p1a: Squirtle|4/12
+|move|p1a: Squirtle|Bubble|p2a: Charmander
+|-supereffective|p2a: Charmander
+|-damage|p2a: Charmander|5/12
+|
+|-weather|none
+|upkeep
+|turn|19
+|
+|t:|1733767940
+|move|p1a: Squirtle|Protect|p1a: Squirtle
+|-singleturn|p1a: Squirtle|Protect
+|move|p2a: Charmander|Tackle|p1a: Squirtle
+|-activate|p1a: Squirtle|move: Protect
+|
+|upkeep
+|turn|20
+|
+|t:|1733767940
+|move|p2a: Charmander|Protect|p2a: Charmander
+|-singleturn|p2a: Charmander|Protect
+|move|p1a: Squirtle|Bubble|p2a: Charmander
+|-activate|p2a: Charmander|move: Protect
+|
+|upkeep
+|turn|21
+|
+|t:|1733767940
+|move|p2a: Charmander|Protect||[still]
+|-fail|p2a: Charmander
+|move|p1a: Squirtle|Tackle|p2a: Charmander
+|-damage|p2a: Charmander|3/12
+|
+|upkeep
+|turn|22
+|
+|t:|1733767940
+|move|p1a: Squirtle|Tackle|p2a: Charmander
+|-damage|p2a: Charmander|1/12
+|move|p2a: Charmander|Tackle|p1a: Squirtle
+|-damage|p1a: Squirtle|2/12
+|
+|upkeep
+|turn|23
+|
+|t:|1733767940
+|move|p2a: Charmander|Tackle|p1a: Squirtle
+|-damage|p1a: Squirtle|0 fnt
+|faint|p1a: Squirtle
+|
+|win|Kuro
