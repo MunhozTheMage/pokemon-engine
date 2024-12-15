@@ -1,4 +1,11 @@
-import { Dex, Learnset, ModdedDex, Species, TypeName } from "@pkmn/dex";
+import {
+  Dex,
+  Learnset,
+  ModdedDex,
+  NatureName,
+  Species,
+  TypeName,
+} from "@pkmn/dex";
 
 const GENERATION = 9;
 
@@ -30,6 +37,9 @@ type UnitPokemonInitOptions = {
   evs?: Partial<UnitPokemonStat>;
   ivs?: Partial<UnitPokemonStat>;
   moves: UnitPokemonMoveList;
+  gender?: "M" | "F";
+  heldItem?: string;
+  nature?: NatureName;
 };
 
 type UnitPokemonMove = {
@@ -107,14 +117,17 @@ class UnitPokemon {
   private _shiny?: UnitPokemonInitOptions["shiny"];
   private _level?: UnitPokemonInitOptions["level"];
   private _moves?: UnitPokemonInitOptions["moves"];
+  private _heldItem?: UnitPokemonInitOptions["heldItem"];
+  private _evs?: UnitPokemonInitOptions["evs"];
+  private _ivs?: UnitPokemonInitOptions["ivs"];
 
   private EVOLUTIONS_CACHE?: UnitPokemonEvolution[];
   private LEARNSET_CACHE?: UnitPokemonLearnset;
 
   hiddenPowerType?: UnitPokemonInitOptions["hiddenPowerType"];
-  evs?: UnitPokemonInitOptions["evs"];
-  ivs?: UnitPokemonInitOptions["ivs"];
   teraType?: UnitPokemonInitOptions["teraType"];
+  gender?: UnitPokemonInitOptions["gender"];
+  nature?: UnitPokemonInitOptions["nature"];
 
   static async create(options: UnitPokemonInitOptions) {
     const unitPokemon = new UnitPokemon();
@@ -135,15 +148,20 @@ class UnitPokemon {
     nickname,
     shiny,
     teraType,
+    gender,
+    heldItem,
+    nature,
   }: UnitPokemonInitOptions) {
     this.dexData = Dex.forGen(generation);
     this.speciesData = this.dexData.species.get(speciesName);
     this.learnsetData = await this.dexData.learnsets.get(speciesName);
 
     this.hiddenPowerType = hiddenPowerType;
-    this.evs = evs;
-    this.ivs = ivs;
+    this._evs = evs;
+    this._ivs = ivs;
     this.teraType = teraType;
+    this.gender = gender;
+    this.nature = nature;
 
     this._level = level;
     this._nickname = nickname;
@@ -151,6 +169,7 @@ class UnitPokemon {
     this._happiness = happiness;
     this._ability = ability;
     this._moves = moves;
+    this._heldItem = heldItem;
   }
 
   private getInitializedData() {
@@ -203,6 +222,38 @@ class UnitPokemon {
   get moves() {
     const { moves, dexData } = this.getInitializedData();
     return moves.map((move) => dexData.moves.get(move));
+  }
+
+  get heldItem() {
+    if (!this._heldItem) return undefined;
+    const { dexData } = this.getInitializedData();
+    return dexData.moves.get(this._heldItem);
+  }
+
+  get evs() {
+    const baseEvs = { ...this._evs };
+
+    baseEvs.hp ||= 0;
+    baseEvs.atk ||= 0;
+    baseEvs.def ||= 0;
+    baseEvs.spa ||= 0;
+    baseEvs.spd ||= 0;
+    baseEvs.spe ||= 0;
+
+    return baseEvs as UnitPokemonStat;
+  }
+
+  get ivs() {
+    const baseEvs = { ...this._ivs };
+
+    baseEvs.hp ||= 31;
+    baseEvs.atk ||= 31;
+    baseEvs.def ||= 31;
+    baseEvs.spa ||= 31;
+    baseEvs.spd ||= 31;
+    baseEvs.spe ||= 31;
+
+    return baseEvs as UnitPokemonStat;
   }
 
   get evolutions() {
@@ -324,12 +375,117 @@ class UnitPokemon {
     this.LEARNSET_CACHE = learnset;
     return this.LEARNSET_CACHE;
   }
+
+  private serializeHeader() {
+    let header = "";
+
+    if (this.nickname !== this.speciesName) {
+      header += `${this.nickname} (${this.speciesName})`;
+    } else {
+      header += this.speciesName;
+    }
+
+    if (this.gender) {
+      header += ` (${this.gender})`;
+    }
+
+    if (this.heldItem) {
+      header += ` @ ${this.heldItem.name}`;
+    }
+
+    return header;
+  }
+
+  private serializeStats(stats: Partial<UnitPokemonStat>) {
+    return Object.entries(stats)
+      .map(([key, value]) => {
+        switch (key) {
+          case "hp":
+            return `${value} HP`;
+          case "atk":
+            return `${value} Atk`;
+          case "def":
+            return `${value} Def`;
+          case "spa":
+            return `${value} SpA`;
+          case "spd":
+            return `${value} SpD`;
+          case "spe":
+            return `${value} Spe`;
+        }
+      })
+      .filter((v) => v !== undefined)
+      .join(" / ");
+  }
+
+  private serializeMoves() {
+    return this.moves.map((move) => `- ${move.name}`).join("\n");
+  }
+
+  serialize() {
+    let serializedPokemon = "";
+
+    serializedPokemon += this.serializeHeader() + "\n";
+    serializedPokemon += `Ability: ${this.ability.name}\n`;
+
+    if (this.level !== 100) {
+      serializedPokemon += `Level: ${this.level}\n`;
+    }
+
+    if (this.shiny) {
+      serializedPokemon += "Shiny: Yes\n";
+    }
+
+    if (this.happiness !== 255) {
+      serializedPokemon += `Happiness: ${this.happiness}\n`;
+    }
+
+    if (this.hiddenPowerType) {
+      serializedPokemon += `Hidden Power: ${this.hiddenPowerType}\n`;
+    }
+
+    if (this.teraType) {
+      serializedPokemon += `Tera Type: ${this.teraType}\n`;
+    }
+
+    const nonStandardEvs = Object.entries(this.evs).filter(
+      ([_key, value]) => value !== 0
+    );
+    if (nonStandardEvs.length > 0) {
+      serializedPokemon += `EVs: ${this.serializeStats(
+        Object.fromEntries(nonStandardEvs)
+      )}\n`;
+    }
+
+    if (this.nature) {
+      serializedPokemon += `${this.nature} Nature`;
+    }
+
+    const nonStandardIvs = Object.entries(this.ivs).filter(
+      ([_key, value]) => value !== 31
+    );
+    if (nonStandardIvs.length > 0) {
+      serializedPokemon += `IVs: ${this.serializeStats(
+        Object.fromEntries(nonStandardIvs)
+      )}\n`;
+    }
+
+    serializedPokemon += this.serializeMoves();
+
+    return serializedPokemon;
+  }
 }
 
 UnitPokemon.create({
   speciesName: "eevee",
   ability: "adaptability",
   moves: ["Covet", "Sand Attack"],
+  evs: {
+    spa: 252,
+  },
+  heldItem: "Eviolite",
+  shiny: true,
+  gender: "F",
 }).then((unitPokemon) => {
   console.log("ABILITY: ", unitPokemon.ability);
   console.log("EVOLUTIONS: ", unitPokemon.evolutions);
@@ -344,4 +500,6 @@ UnitPokemon.create({
   console.log("SHINY: ", unitPokemon.shiny);
   console.log("SPECIES NAME: ", unitPokemon.speciesName);
   console.log("TERA TYPE: ", unitPokemon.teraType);
+
+  console.log("\nSERIALIZED: ", unitPokemon.serialize());
 });
