@@ -1,275 +1,390 @@
->start {"formatid":"gen9nationaldex"}
->player p1 {"name":"Sakura","team":"Charmander|||SolarPower|Ember,Protect,Tackle,SunnyDay||1,,,,,||||1|,,,,,Dragon]Squirtle|||RainDish|Bubble,Protect,RainDance,Tackle||1,,,,,||||1|,,,,,Dragon"}
->player p2 {"name":"Kuro","team":"Squirtle|||RainDish|Bubble,Protect,RainDance,Tackle||1,,,,,||||1|,,,,,Dragon]Charmander|||SolarPower|Ember,Protect,Tackle,SunnyDay||1,,,,,||||1|,,,,,Dragon"}
-|t:|1733767940
 |gametype|singles
-|player|p1|Sakura||
-|player|p2|Kuro||
-|teamsize|p1|2
-|teamsize|p2|2
+|player|p1|AI-1||
+|player|p2|AI-2||
+|teamsize|p1|6
+|teamsize|p2|6
 |gen|9
-|tier|[Gen 9] National Dex
-|rule|HP Percentage Mod: HP is shown in percentages
-|rule|Endless Battle Clause: Forcing endless battles is banned
-|rule|OHKO Clause: OHKO moves are banned
-|rule|Evasion Clause: Evasion abilities, items, and moves are banned
-|rule|Evasion Abilities Clause: Evasion abilities are banned
-|rule|Evasion Items Clause: Evasion items are banned
-|rule|Evasion Moves Clause: Evasion moves are banned
+|tier|[Gen 9] Random Battle
 |rule|Species Clause: Limit one of each Pokémon
+|rule|HP Percentage Mod: HP is shown in percentages
 |rule|Sleep Clause Mod: Limit one foe put to sleep
-|rule|Terastal Clause: You cannot Terastallize
-|clearpoke
-|poke|p1|Charmander, L1, F|
-|poke|p1|Squirtle, L1, M|
-|poke|p2|Squirtle, L1, M|
-|poke|p2|Charmander, L1, M|
-|teampreview
+|rule|Illusion Level Mod: Illusion disguises the Pokémon's true level
 |
-|t:|1733767940
+|t:|1735068063
 |start
-|switch|p1a: Charmander|Charmander, L1, F|12/12
-|switch|p2a: Squirtle|Squirtle, L1, M|12/12
-|turn|1
+|switch|p1a: Dudunsparce|Dudunsparce-Three-Segment, L83, F|343/343
+|switch|p2a: Greninja|Greninja, L80, M|246/246
+|turn|1|
+|t:|1735068063
+|move|p2a: Greninja|Ice Beam|p1a: Dudunsparce
+|-start|p2a: Greninja|typechange|Ice|[from] ability: Protean
+|-damage|p1a: Dudunsparce|175/343
+|move|p1a: Dudunsparce|Shadow Ball|p2a: Greninja
+|-damage|p2a: Greninja|185/246
 |
-|t:|1733767940
-|move|p1a: Charmander|Protect|p1a: Charmander
-|-singleturn|p1a: Charmander|Protect
-|move|p2a: Squirtle|Tackle|p1a: Charmander
-|-activate|p1a: Charmander|move: Protect
+|-heal|p1a: Dudunsparce|196/343|[from] item: Leftovers
+|upkeep
+|turn|2|
+|t:|1735068063
+|move|p2a: Greninja|Ice Beam|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|45/343
+|move|p1a: Dudunsparce|Roost|p1a: Dudunsparce
+|-heal|p1a: Dudunsparce|217/343
+|-singleturn|p1a: Dudunsparce|move: Roost
+|
+|-heal|p1a: Dudunsparce|238/343|[from] item: Leftovers
+|upkeep
+|turn|3|
+|t:|1735068063
+|move|p2a: Greninja|Ice Beam|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|87/343
+|move|p1a: Dudunsparce|Boomburst|p2a: Greninja
+|-damage|p2a: Greninja|29/246
+|
+|-heal|p1a: Dudunsparce|108/343|[from] item: Leftovers
+|upkeep
+|turn|4|
+|t:|1735068063
+|move|p2a: Greninja|Ice Beam|p1a: Dudunsparce
+|-damage|p1a: Dudunsparce|0 fnt
+|faint|p1a: Dudunsparce
+|
+|upkeep|
+|t:|1735068063
+|switch|p1a: Tinkaton|Tinkaton, L82, F|274/274
+|-ability|p1a: Tinkaton|Mold Breaker
+|turn|5|
+|t:|1735068063
+|move|p2a: Greninja|Ice Beam|p1a: Tinkaton
+|-resisted|p1a: Tinkaton
+|-crit|p1a: Tinkaton
+|-damage|p1a: Tinkaton|178/274
+|move|p1a: Tinkaton|Knock Off|p2a: Greninja
+|-damage|p2a: Greninja|0 fnt
+|-enditem|p2a: Greninja|Choice Specs|[from] move: Knock Off|[of] p1a: Tinkaton
+|faint|p2a: Greninja
+|-damage|p1a: Tinkaton|151/274|[from] item: Life Orb
+|
+|upkeep|
+|t:|1735068063
+|switch|p2a: Sandaconda|Sandaconda, L84, F|258/258
+|turn|6|
+|t:|1735068063
+|move|p1a: Tinkaton|Knock Off|p2a: Sandaconda
+|-damage|p2a: Sandaconda|205/258
+|-enditem|p2a: Sandaconda|Leftovers|[from] move: Knock Off|[of] p1a: Tinkaton
+|-damage|p1a: Tinkaton|124/274|[from] item: Life Orb
+|move|p2a: Sandaconda|Stone Edge|p1a: Tinkaton|[miss]
+|-miss|p2a: Sandaconda|p1a: Tinkaton
 |
 |upkeep
-|turn|2
-|
-|t:|1733767940
-|move|p2a: Squirtle|Tackle|p1a: Charmander
-|-damage|p1a: Charmander|10/12
-|move|p1a: Charmander|Sunny Day|p1a: Charmander
-|-weather|SunnyDay
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p1a: Charmander|9/12|[from] ability: Solar Power|[of] p1a: Charmander
-|upkeep
-|turn|3
-|
-|t:|1733767940
-|move|p2a: Squirtle|Rain Dance|p2a: Squirtle
-|-weather|RainDance
-|move|p1a: Charmander|Tackle|p2a: Squirtle
-|-damage|p2a: Squirtle|10/12
-|
-|-weather|RainDance|[upkeep]
-|-heal|p2a: Squirtle|11/12|[from] ability: Rain Dish
-|upkeep
-|turn|4
-|
-|t:|1733767940
-|move|p2a: Squirtle|Protect|p2a: Squirtle
-|-singleturn|p2a: Squirtle|Protect
-|move|p1a: Charmander|Sunny Day|p1a: Charmander
-|-weather|SunnyDay
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p1a: Charmander|8/12|[from] ability: Solar Power|[of] p1a: Charmander
-|upkeep
-|turn|5
-|
-|t:|1733767940
-|move|p1a: Charmander|Tackle|p2a: Squirtle
-|-damage|p2a: Squirtle|9/12
-|move|p2a: Squirtle|Bubble|p1a: Charmander
-|-supereffective|p1a: Charmander
-|-damage|p1a: Charmander|7/12
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p1a: Charmander|6/12|[from] ability: Solar Power|[of] p1a: Charmander
-|upkeep
-|turn|6
-|
-|t:|1733767940
-|move|p1a: Charmander|Ember|p2a: Squirtle
-|-resisted|p2a: Squirtle
-|-damage|p2a: Squirtle|6/12
-|move|p2a: Squirtle|Tackle|p1a: Charmander
-|-crit|p1a: Charmander
-|-damage|p1a: Charmander|2/12
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p1a: Charmander|1/12|[from] ability: Solar Power|[of] p1a: Charmander
-|upkeep
-|turn|7
-|
-|t:|1733767940
-|move|p2a: Squirtle|Tackle|p1a: Charmander
-|-damage|p1a: Charmander|0 fnt
-|faint|p1a: Charmander
-|
-|-weather|SunnyDay|[upkeep]
-|upkeep
-|
-|t:|1733767940
-|switch|p1a: Squirtle|Squirtle, L1, M|12/12
-|turn|8
-|
-|t:|1733767940
-|move|p2a: Squirtle|Protect|p2a: Squirtle
-|-singleturn|p2a: Squirtle|Protect
-|move|p1a: Squirtle|Tackle|p2a: Squirtle
-|-activate|p2a: Squirtle|move: Protect
-|
-|-weather|none
-|upkeep
-|turn|9
-|
-|t:|1733767940
-|move|p1a: Squirtle|Tackle|p2a: Squirtle
-|-damage|p2a: Squirtle|4/12
-|move|p2a: Squirtle|Bubble|p1a: Squirtle
-|-resisted|p1a: Squirtle
-|-damage|p1a: Squirtle|11/12
+|turn|7|
+|t:|1735068063
+|move|p1a: Tinkaton|Knock Off|p2a: Sandaconda
+|-damage|p2a: Sandaconda|166/258
+|-damage|p1a: Tinkaton|97/274|[from] item: Life Orb
+|move|p2a: Sandaconda|Stone Edge|p1a: Tinkaton
+|-resisted|p1a: Tinkaton
+|-damage|p1a: Tinkaton|52/274
 |
 |upkeep
-|turn|10
+|turn|8|
+|t:|1735068063
+|move|p1a: Tinkaton|Gigaton Hammer|p2a: Sandaconda
+|-damage|p2a: Sandaconda|44/258
+|-damage|p1a: Tinkaton|25/274|[from] item: Life Orb
+|move|p2a: Sandaconda|Earthquake|p1a: Tinkaton
+|-supereffective|p1a: Tinkaton
+|-damage|p1a: Tinkaton|0 fnt
+|faint|p1a: Tinkaton
 |
-|t:|1733767940
-|move|p2a: Squirtle|Bubble|p1a: Squirtle
-|-resisted|p1a: Squirtle
-|-damage|p1a: Squirtle|10/12
-|move|p1a: Squirtle|Tackle|p2a: Squirtle
-|-damage|p2a: Squirtle|2/12
-|
-|upkeep
-|turn|11
-|
-|t:|1733767940
-|move|p1a: Squirtle|Tackle|p2a: Squirtle
-|-damage|p2a: Squirtle|0 fnt
-|faint|p2a: Squirtle
-|
-|upkeep
-|
-|t:|1733767940
-|switch|p2a: Charmander|Charmander, L1, M|12/12
-|turn|12
-|
-|t:|1733767940
-|move|p1a: Squirtle|Rain Dance|p1a: Squirtle
-|-weather|RainDance
-|move|p2a: Charmander|Tackle|p1a: Squirtle
-|-damage|p1a: Squirtle|8/12
-|
-|-weather|RainDance|[upkeep]
-|-heal|p1a: Squirtle|9/12|[from] ability: Rain Dish
-|upkeep
-|turn|13
-|
-|t:|1733767940
-|move|p1a: Squirtle|Protect|p1a: Squirtle
-|-singleturn|p1a: Squirtle|Protect
-|move|p2a: Charmander|Sunny Day|p2a: Charmander
-|-weather|SunnyDay
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p2a: Charmander|11/12|[from] ability: Solar Power|[of] p2a: Charmander
-|upkeep
-|turn|14
-|
-|t:|1733767940
-|move|p1a: Squirtle|Rain Dance|p1a: Squirtle
-|-weather|RainDance
-|move|p2a: Charmander|Sunny Day|p2a: Charmander
-|-weather|SunnyDay
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p2a: Charmander|10/12|[from] ability: Solar Power|[of] p2a: Charmander
-|upkeep
-|turn|15
-|
-|t:|1733767940
-|move|p2a: Charmander|Protect|p2a: Charmander
-|-singleturn|p2a: Charmander|Protect
-|move|p1a: Squirtle|Protect||[still]
-|-fail|p1a: Squirtle
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p2a: Charmander|9/12|[from] ability: Solar Power|[of] p2a: Charmander
-|upkeep
-|turn|16
-|
-|t:|1733767940
-|move|p1a: Squirtle|Protect|p1a: Squirtle
-|-singleturn|p1a: Squirtle|Protect
-|move|p2a: Charmander|Sunny Day||[still]
-|-fail|p2a: Charmander
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p2a: Charmander|8/12|[from] ability: Solar Power|[of] p2a: Charmander
-|upkeep
-|turn|17
-|
-|t:|1733767940
-|move|p1a: Squirtle|Bubble|p2a: Charmander
-|-supereffective|p2a: Charmander
-|-damage|p2a: Charmander|7/12
-|move|p2a: Charmander|Tackle|p1a: Squirtle
-|-damage|p1a: Squirtle|7/12
-|
-|-weather|SunnyDay|[upkeep]
-|-damage|p2a: Charmander|6/12|[from] ability: Solar Power|[of] p2a: Charmander
-|upkeep
-|turn|18
-|
-|t:|1733767940
-|move|p2a: Charmander|Ember|p1a: Squirtle
-|-resisted|p1a: Squirtle
-|-damage|p1a: Squirtle|4/12
-|move|p1a: Squirtle|Bubble|p2a: Charmander
-|-supereffective|p2a: Charmander
-|-damage|p2a: Charmander|5/12
-|
-|-weather|none
-|upkeep
-|turn|19
-|
-|t:|1733767940
-|move|p1a: Squirtle|Protect|p1a: Squirtle
-|-singleturn|p1a: Squirtle|Protect
-|move|p2a: Charmander|Tackle|p1a: Squirtle
-|-activate|p1a: Squirtle|move: Protect
+|upkeep|
+|t:|1735068063
+|switch|p1a: Regieleki|Regieleki, L79|256/256
+|turn|9|
+|t:|1735068063
+|move|p1a: Regieleki|Volt Switch|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|move|p2a: Sandaconda|Coil|p2a: Sandaconda
+|-boost|p2a: Sandaconda|atk|1
+|-boost|p2a: Sandaconda|def|1
+|-boost|p2a: Sandaconda|accuracy|1
 |
 |upkeep
-|turn|20
+|turn|10|
+|t:|1735068063
+|move|p1a: Regieleki|Thunderbolt|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|move|p2a: Sandaconda|Rest|p2a: Sandaconda
+|-status|p2a: Sandaconda|slp|[from] move: Rest
+|-heal|p2a: Sandaconda|258/258 slp|[silent]
 |
-|t:|1733767940
-|move|p2a: Charmander|Protect|p2a: Charmander
-|-singleturn|p2a: Charmander|Protect
-|move|p1a: Squirtle|Bubble|p2a: Charmander
-|-activate|p2a: Charmander|move: Protect
+|-activate|p2a: Sandaconda|ability: Shed Skin
+|-curestatus|p2a: Sandaconda|slp|[msg]
+|upkeep
+|turn|11|
+|t:|1735068063
+|move|p1a: Regieleki|Volt Switch|p2a: Sandaconda
+|-immune|p2a: Sandaconda
+|move|p2a: Sandaconda|Earthquake|p1a: Regieleki
+|-supereffective|p1a: Regieleki
+|-damage|p1a: Regieleki|0 fnt
+|faint|p1a: Regieleki
+|
+|upkeep|
+|t:|1735068063
+|switch|p1a: Bastiodon|Bastiodon, L89, M|252/252
+|turn|12|
+|t:|1735068063
+|move|p2a: Sandaconda|Stone Edge|p1a: Bastiodon
+|-resisted|p1a: Bastiodon
+|-damage|p1a: Bastiodon|219/252
+|move|p1a: Bastiodon|Body Press|p2a: Sandaconda
+|-damage|p2a: Sandaconda|206/258
 |
 |upkeep
-|turn|21
-|
-|t:|1733767940
-|move|p2a: Charmander|Protect||[still]
-|-fail|p2a: Charmander
-|move|p1a: Squirtle|Tackle|p2a: Charmander
-|-damage|p2a: Charmander|3/12
-|
-|upkeep
-|turn|22
-|
-|t:|1733767940
-|move|p1a: Squirtle|Tackle|p2a: Charmander
-|-damage|p2a: Charmander|1/12
-|move|p2a: Charmander|Tackle|p1a: Squirtle
-|-damage|p1a: Squirtle|2/12
+|turn|13|
+|t:|1735068063
+|move|p2a: Sandaconda|Stone Edge|p1a: Bastiodon
+|-resisted|p1a: Bastiodon
+|-damage|p1a: Bastiodon|187/252
+|move|p1a: Bastiodon|Rest|p1a: Bastiodon
+|-status|p1a: Bastiodon|slp|[from] move: Rest
+|-heal|p1a: Bastiodon|252/252 slp|[silent]
+|-enditem|p1a: Bastiodon|Chesto Berry|[eat]
+|-curestatus|p1a: Bastiodon|slp|[msg]
 |
 |upkeep
-|turn|23
+|turn|14|
+|t:|1735068063
+|move|p2a: Sandaconda|Stone Edge|p1a: Bastiodon
+|-resisted|p1a: Bastiodon
+|-damage|p1a: Bastiodon|217/252
+|move|p1a: Bastiodon|Foul Play|p2a: Sandaconda
+|-damage|p2a: Sandaconda|146/258
 |
-|t:|1733767940
-|move|p2a: Charmander|Tackle|p1a: Squirtle
-|-damage|p1a: Squirtle|0 fnt
-|faint|p1a: Squirtle
+|upkeep
+|turn|15|
+|t:|1735068063
+|move|p2a: Sandaconda|Coil|p2a: Sandaconda
+|-boost|p2a: Sandaconda|atk|1
+|-boost|p2a: Sandaconda|def|1
+|-boost|p2a: Sandaconda|accuracy|1
+|move|p1a: Bastiodon|Rest|p1a: Bastiodon
+|-status|p1a: Bastiodon|slp|[from] move: Rest
+|-heal|p1a: Bastiodon|252/252 slp|[silent]
 |
-|win|Kuro
+|upkeep
+|turn|16|
+|t:|1735068063
+|move|p2a: Sandaconda|Stone Edge|p1a: Bastiodon
+|-resisted|p1a: Bastiodon
+|-damage|p1a: Bastiodon|207/252 slp
+|cant|p1a: Bastiodon|slp
+|
+|upkeep
+|turn|17|
+|t:|1735068063
+|move|p2a: Sandaconda|Coil|p2a: Sandaconda
+|-boost|p2a: Sandaconda|atk|1
+|-boost|p2a: Sandaconda|def|1
+|-boost|p2a: Sandaconda|accuracy|1
+|cant|p1a: Bastiodon|slp
+|
+|upkeep
+|turn|18|
+|t:|1735068063
+|move|p2a: Sandaconda|Coil|p2a: Sandaconda
+|-boost|p2a: Sandaconda|atk|1
+|-boost|p2a: Sandaconda|def|1
+|-boost|p2a: Sandaconda|accuracy|1
+|-curestatus|p1a: Bastiodon|slp|[msg]
+|move|p1a: Bastiodon|Foul Play|p2a: Sandaconda
+|-damage|p2a: Sandaconda|84/258
+|
+|upkeep
+|turn|19|
+|t:|1735068063
+|move|p2a: Sandaconda|Earthquake|p1a: Bastiodon
+|-supereffective|p1a: Bastiodon
+|-damage|p1a: Bastiodon|0 fnt
+|faint|p1a: Bastiodon
+|
+|upkeep|
+|t:|1735068063
+|switch|p1a: Baxcalibur|Baxcalibur, L75, M|296/296
+|turn|20|
+|t:|1735068063
+|move|p1a: Baxcalibur|Dragon Dance|p1a: Baxcalibur
+|-boost|p1a: Baxcalibur|atk|1
+|-boost|p1a: Baxcalibur|spe|1
+|move|p2a: Sandaconda|Earthquake|p1a: Baxcalibur
+|-damage|p1a: Baxcalibur|0 fnt
+|faint|p1a: Baxcalibur
+|
+|upkeep|
+|t:|1735068063
+|switch|p1a: Yanmega|Yanmega, L82, M|275/275
+|turn|21|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Sandaconda
+|-supereffective|p2a: Sandaconda
+|-damage|p2a: Sandaconda|0 fnt
+|faint|p2a: Sandaconda
+|
+|upkeep|
+|t:|1735068063
+|switch|p2a: Chesnaught|Chesnaught, L84, M|285/285
+|turn|22|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Chesnaught
+|-resisted|p2a: Chesnaught
+|-damage|p2a: Chesnaught|193/285
+|move|p2a: Chesnaught|Body Press|p1a: Yanmega
+|-resisted|p1a: Yanmega
+|-damage|p1a: Yanmega|250/275
+|
+|upkeep
+|turn|23|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Chesnaught
+|-resisted|p2a: Chesnaught
+|-damage|p2a: Chesnaught|91/285
+|-heal|p1a: Yanmega|275/275|[from] drain|[of] p2a: Chesnaught
+|move|p2a: Chesnaught|Wood Hammer|p1a: Yanmega
+|-resisted|p1a: Yanmega
+|-damage|p1a: Yanmega|239/275
+|-damage|p2a: Chesnaught|79/285|[from] Recoil
+|
+|upkeep
+|turn|24|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Chesnaught
+|-resisted|p2a: Chesnaught
+|-damage|p2a: Chesnaught|0 fnt
+|-heal|p1a: Yanmega|275/275|[from] drain|[of] p2a: Chesnaught
+|faint|p2a: Chesnaught
+|
+|upkeep|
+|t:|1735068063
+|switch|p2a: Lucario|Lucario, L84, M|255/255
+|turn|25|
+|t:|1735068063
+|move|p2a: Lucario|Extreme Speed|p1a: Yanmega
+|-damage|p1a: Yanmega|170/275
+|move|p1a: Yanmega|Giga Drain|p2a: Lucario
+|-resisted|p2a: Lucario
+|-damage|p2a: Lucario|147/255
+|-heal|p1a: Yanmega|224/275|[from] drain|[of] p2a: Lucario
+|
+|upkeep
+|turn|26|
+|t:|1735068063
+|move|p2a: Lucario|Extreme Speed|p1a: Yanmega
+|-damage|p1a: Yanmega|129/275
+|move|p1a: Yanmega|Giga Drain|p2a: Lucario
+|-resisted|p2a: Lucario
+|-damage|p2a: Lucario|49/255
+|-heal|p1a: Yanmega|178/275|[from] drain|[of] p2a: Lucario
+|
+|upkeep
+|turn|27|
+|t:|1735068063
+|move|p2a: Lucario|Extreme Speed|p1a: Yanmega
+|-damage|p1a: Yanmega|73/275
+|move|p1a: Yanmega|Giga Drain|p2a: Lucario
+|-resisted|p2a: Lucario
+|-damage|p2a: Lucario|0 fnt
+|-heal|p1a: Yanmega|98/275|[from] drain|[of] p2a: Lucario
+|faint|p2a: Lucario
+|
+|upkeep|
+|t:|1735068063
+|switch|p2a: Ursaring|Ursaring, L84, F|288/288
+|turn|28|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|220/288
+|-heal|p1a: Yanmega|132/275|[from] drain|[of] p2a: Ursaring
+|move|p2a: Ursaring|Rest|p2a: Ursaring
+|-status|p2a: Ursaring|slp|[from] move: Rest
+|-heal|p2a: Ursaring|288/288 slp|[silent]
+|
+|upkeep
+|turn|29|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|224/288 slp
+|-heal|p1a: Yanmega|164/275|[from] drain|[of] p2a: Ursaring
+|cant|p2a: Ursaring|slp
+|move|p2a: Ursaring|Sleep Talk|p2a: Ursaring
+|move|p2a: Ursaring|Rest||[from]move: Sleep Talk|[still]
+|-fail|p2a: Ursaring
+|
+|upkeep
+|turn|30|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|159/288 slp
+|-heal|p1a: Yanmega|197/275|[from] drain|[of] p2a: Ursaring
+|cant|p2a: Ursaring|slp
+|
+|upkeep
+|turn|31|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|91/288 slp
+|-heal|p1a: Yanmega|231/275|[from] drain|[of] p2a: Ursaring
+|-curestatus|p2a: Ursaring|slp|[msg]
+|move|p2a: Ursaring|Earthquake|p1a: Yanmega
+|-immune|p1a: Yanmega
+|
+|upkeep
+|turn|32|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|23/288
+|-heal|p1a: Yanmega|265/275|[from] drain|[of] p2a: Ursaring
+|move|p2a: Ursaring|Earthquake|p1a: Yanmega
+|-immune|p1a: Yanmega
+|
+|upkeep
+|turn|33|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Ursaring
+|-damage|p2a: Ursaring|0 fnt
+|-heal|p1a: Yanmega|275/275|[from] drain|[of] p2a: Ursaring
+|faint|p2a: Ursaring
+|
+|upkeep|
+|t:|1735068063
+|switch|p2a: Venomoth|Venomoth, L84, F|255/255
+|turn|34|
+|t:|1735068063
+|move|p1a: Yanmega|Giga Drain|p2a: Venomoth
+|-resisted|p2a: Venomoth
+|-damage|p2a: Venomoth|205/255
+|move|p2a: Venomoth|Quiver Dance|p2a: Venomoth
+|-boost|p2a: Venomoth|spa|1
+|-boost|p2a: Venomoth|spd|1
+|-boost|p2a: Venomoth|spe|1
+|
+|upkeep
+|turn|35|
+|t:|1735068063
+|move|p2a: Venomoth|Bug Buzz|p1a: Yanmega
+|-resisted|p1a: Yanmega
+|-damage|p1a: Yanmega|101/275
+|move|p1a: Yanmega|Giga Drain|p2a: Venomoth
+|-resisted|p2a: Venomoth
+|-damage|p2a: Venomoth|175/255
+|-heal|p1a: Yanmega|116/275|[from] drain|[of] p2a: Venomoth
+|
+|upkeep
+|turn|36|
+|t:|1735068063
+|move|p2a: Venomoth|Sludge Wave|p1a: Yanmega
+|-damage|p1a: Yanmega|0 fnt
+|faint|p1a: Yanmega
+|
+|win|AI-2

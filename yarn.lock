@@ -27,10 +27,32 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@pkmn/client@^0.6.30":
+  version "0.6.30"
+  resolved "https://registry.yarnpkg.com/@pkmn/client/-/client-0.6.30.tgz#c56a77a045797fbf7c89cb11e80f7f07fe88023b"
+  integrity sha512-/4TnBv3co5j4mhfgVbvj4ct3bn+SBLuRhccfd8uoVM6is1EqxWOlAe4uYh0c359rtmkYHTVyBU1tS+NxDLrY/w==
+  dependencies:
+    "@pkmn/data" "^0.9.24"
+    "@pkmn/protocol" "^0.6.30"
+
+"@pkmn/data@^0.9.24", "@pkmn/data@^0.9.25":
+  version "0.9.25"
+  resolved "https://registry.yarnpkg.com/@pkmn/data/-/data-0.9.25.tgz#1d61aab4a98bccd5ac2090693b76fdb5398c628b"
+  integrity sha512-HKiYg3IOdcJB1o6lo8draHqagXWgIo8CbI47JBiWiz+KnkyES0Tic9ujT9a60d761QVosepCFZUEp4/drU0jYQ==
+  dependencies:
+    "@pkmn/dex-types" "^0.9.25"
+
 "@pkmn/dex-types@^0.9.24":
   version "0.9.24"
   resolved "https://registry.yarnpkg.com/@pkmn/dex-types/-/dex-types-0.9.24.tgz#a682fceb9f0d2b3a4b924e686f37875db8b1c9f5"
   integrity sha512-DmRJ3IS35GraywaTwmwjXYVrboGtKc5MBWI155JABN1Z5ven8SNIcU7Sx+1x+Z6TMC0wHHsL0NTpTFoZAxVz/w==
+  dependencies:
+    "@pkmn/types" "^4.0.0"
+
+"@pkmn/dex-types@^0.9.25":
+  version "0.9.25"
+  resolved "https://registry.yarnpkg.com/@pkmn/dex-types/-/dex-types-0.9.25.tgz#35810e299bb2a1511ba557a50d5977830b7bf688"
+  integrity sha512-CKIyIVrIWcEq24HMn6UYDLpeRN5D/gXWgFv2aLmDcFRRnXa5gXUJmIYemxYftEQHvbdAH4s2sANnHl0+xWWI7A==
   dependencies:
     "@pkmn/types" "^4.0.0"
 
@@ -40,6 +62,13 @@
   integrity sha512-5/6WoMPvD39y5QEUyqeUS0QilJPNL/PIDqQLLqcShRiAowHY4pSWlklTFOJiOReOXlOIwoCdtb5aoudy7I3aYg==
   dependencies:
     "@pkmn/dex-types" "^0.9.24"
+
+"@pkmn/protocol@^0.6.30":
+  version "0.6.30"
+  resolved "https://registry.yarnpkg.com/@pkmn/protocol/-/protocol-0.6.30.tgz#51763c5c076a2dd3b9932205b05fe7c89e66b833"
+  integrity sha512-QwkZqPT66kO4nbEOtR5VdKcsq28ntWuKehS1/ajSqpoWjO9B8odZfopSmQewfGay0paVE1vmWUx8qlyPKtj7tg==
+  dependencies:
+    "@pkmn/types" "^4.0.0"
 
 "@pkmn/randoms@^0.9.24":
   version "0.9.24"
@@ -72,6 +101,14 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@pkmn/types/-/types-4.0.0.tgz#5e8a2d2be3fd8c8f2f8eb642ceceec96223f8729"
   integrity sha512-gR2s/pxJYEegek1TtsYCQupNR3d5hMlcJFsiD+2LyfKr4tc+gETTql47tWLX5mFSbPcbXh7f4+7txlMIDoZx/g==
+
+"@pkmn/view@^0.6.30":
+  version "0.6.30"
+  resolved "https://registry.yarnpkg.com/@pkmn/view/-/view-0.6.30.tgz#16e79392a72b6b2e1d1bfd43f6f5cf790cfbf43a"
+  integrity sha512-TkRqWXcyZJUNlGao+re6NUMApCyVE6scYhsno3sgurkGfMzlYQvmDMsiucQ8v8//7LT4k+K0XYTGNTvp0LRRTA==
+  dependencies:
+    "@pkmn/protocol" "^0.6.30"
+    "@pkmn/types" "^4.0.0"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.11"

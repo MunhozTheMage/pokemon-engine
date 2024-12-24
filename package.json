@@ -13,9 +13,12 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@pkmn/client": "^0.6.30",
+    "@pkmn/data": "^0.9.25",
     "@pkmn/dex": "^0.9.24",
     "@pkmn/randoms": "^0.9.24",
     "@pkmn/sets": "^5.1.2",
-    "@pkmn/sim": "^0.9.24"
+    "@pkmn/sim": "^0.9.24",
+    "@pkmn/view": "^0.6.30"
   }
 }
