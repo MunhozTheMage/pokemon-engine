@@ -2,9 +2,11 @@ import { BattleStreams, Teams } from "@pkmn/sim";
 import { Dex } from "@pkmn/sim";
 import { Formats } from "./myformats";
 import { TeamGenerators } from "@pkmn/randoms";
-import ProtocolWritter from "./ProtocolWritter";
-import ProtocolRandomAI from "./basic-ai";
+import ProtocolWritter from "./src/ProtocolWritter";
 import { writeFileSync } from "fs";
+import RandomAIAgent from "./src/RandomAIAgent";
+import BattleEntity from "./src/BattleEntity";
+import { UnitPokemon } from "./src/UnitPokemon";
 
 Dex.formats.extend(Formats);
 Teams.setGeneratorFactory(TeamGenerators);
@@ -14,25 +16,54 @@ async function runBattle() {
   const battleStream = new BattleStreams.BattleStream();
   const playerStreams = BattleStreams.getPlayerStreams(battleStream);
 
-  // Generate teams for both players
-  const team1 = Teams.generate("gen9randombattle");
-  const team2 = Teams.generate("gen9randombattle");
+  const team1 = [
+    UnitPokemon.create({
+      speciesName: "golem",
+      ability: "sturdy",
+      moves: ["Rock Blast"],
+    }),
+  ];
+
+  const team2 = [
+    UnitPokemon.create({
+      speciesName: "gyarados",
+      ability: "intimidate",
+      moves: ["Ice Fang"],
+    }),
+  ];
+
+  const player1promise = BattleEntity.create({
+    agent: new RandomAIAgent(playerStreams.p1),
+    name: "AI-1",
+    side: "p1",
+    team: team1,
+  });
+
+  const player2promise = BattleEntity.create({
+    agent: new RandomAIAgent(playerStreams.p2),
+    name: "AI-2",
+    side: "p2",
+    team: team2,
+  });
+
+  const [player1, player2] = await Promise.all([
+    player1promise,
+    player2promise,
+  ]);
 
   const startingChunk = ProtocolWritter.asChunk(
-    ProtocolWritter.startBattle("gen9randombattle"),
-    ProtocolWritter.setPlayer("p1", { nickname: "AI-1", team: team1 }),
-    ProtocolWritter.setPlayer("p2", { nickname: "AI-2", team: team2 })
+    ProtocolWritter.startBattle("gen9story"),
+    player1.writeSpecs(),
+    player2.writeSpecs(),
+    player1.writeTeamOrder(),
+    player2.writeTeamOrder()
   );
 
-  // Start the battle with the generated teams
   await battleStream.write(startingChunk);
-  let stack = startingChunk;
+  let stack = "";
 
-  const player1AI = new ProtocolRandomAI("p1", playerStreams.p1);
-  const player2AI = new ProtocolRandomAI("p2", playerStreams.p2);
-
-  player1AI.start();
-  player2AI.start();
+  player1.startStreaming();
+  player2.startStreaming();
 
   void (async () => {
     for await (const chunk of playerStreams.omniscient) {

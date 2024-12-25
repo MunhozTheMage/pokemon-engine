@@ -1,17 +1,22 @@
-import { Teams } from "@pkmn/sim";
 import { UnitPokemon } from "./UnitPokemon";
-import { PokemonSet, Sets } from "@pkmn/sets";
+import ProtocolWritter, { PlayerSide } from "./ProtocolWritter";
+import { PokemonSet } from "@pkmn/sim";
+import { Sets } from "@pkmn/sets";
+import BattleAgent from "./BattleAgent";
+import { range } from "./helpers/array.helper";
 
 type BattleEntityInitOptions = {
-  position: 1 | 2 | 3 | 4;
+  side: PlayerSide;
   team: UnitPokemon[] | ReturnType<typeof UnitPokemon.create>[];
   name: string;
+  agent: BattleAgent;
 };
 
-class BattleEntity {
-  _position?: number;
+export default class BattleEntity {
+  _side?: PlayerSide;
   _team?: UnitPokemon[];
   _name?: string;
+  _agent?: BattleAgent;
 
   static async create(options: BattleEntityInitOptions) {
     const battleEntity = new BattleEntity();
@@ -19,15 +24,16 @@ class BattleEntity {
     return battleEntity;
   }
 
-  async __init__({ position, team, name }: BattleEntityInitOptions) {
-    this._position = position;
+  async __init__({ side, team, name, agent }: BattleEntityInitOptions) {
+    this._side = side;
     this._name = name;
+    this._agent = agent;
 
     this._team = await Promise.all(team);
   }
 
-  get position() {
-    return this._position!;
+  get side() {
+    return this._side!;
   }
 
   get team() {
@@ -38,14 +44,30 @@ class BattleEntity {
     return this._name!;
   }
 
+  private getInitializedData() {
+    if ([this._agent].some((v) => v === undefined))
+      throw new Error("BattleEntity not initialized.");
+
+    return {
+      agent: this._agent!,
+    };
+  }
+
   writeSpecs() {
-    return `>player p${this.position} ${JSON.stringify({
-      name: this.name,
-      team: Teams.pack(
-        this.team.map(
-          (pokemonUnit) => Sets.importSet(pokemonUnit.serialize()) as PokemonSet
-        )
+    return ProtocolWritter.setPlayer(this.side, {
+      nickname: this.name,
+      team: this.team.map(
+        (pokemonUnit) => Sets.importSet(pokemonUnit.serialize()) as PokemonSet
       ),
-    })}`;
+    });
+  }
+
+  writeTeamOrder() {
+    return ProtocolWritter.setTeamOrder(this.side, range(1, this.team.length));
+  }
+
+  startStreaming() {
+    const { agent } = this.getInitializedData();
+    agent.start();
   }
 }

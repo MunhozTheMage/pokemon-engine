@@ -37,8 +37,8 @@ export default class ProtocolWritter {
     return `>${side} ${choice}`;
   }
 
-  static doublesFormatChoice(choice1: string, choice2: string) {
-    return `${choice1}, ${choice2}`;
+  static join(...choices: string[]) {
+    return choices.join(", ");
   }
 
   static choosePass() {

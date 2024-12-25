@@ -1,49 +1,20 @@
-import { AnyObject, PRNG, PRNGSeed } from "@pkmn/sim";
+import { ObjectReadWriteStream } from "@pkmn/sim/build/cjs/lib/streams";
+import BattleAgent from "./BattleAgent";
 import ProtocolWritter, {
   MoveGimmik,
   NPokemonsFormat,
   PlayerSide,
 } from "./ProtocolWritter";
-import { ObjectReadWriteStream } from "@pkmn/sim/build/cjs/lib/streams";
+import { AnyObject, PRNG, PRNGSeed } from "@pkmn/sim";
+import { range } from "./helpers/array.helper";
 
-function range(start: number, end?: number, step = 1) {
-  if (end === undefined) {
-    end = start;
-    start = 0;
-  }
-  const result = [];
-  for (; start <= end; start += step) {
-    result.push(start);
-  }
-  return result;
-}
-
-function splitFirst(str: string, delimiter: string, limit = 1) {
-  const splitStr: string[] = [];
-  while (splitStr.length < limit) {
-    const delimiterIndex = str.indexOf(delimiter);
-    if (delimiterIndex >= 0) {
-      splitStr.push(str.slice(0, delimiterIndex));
-      str = str.slice(delimiterIndex + delimiter.length);
-    } else {
-      splitStr.push(str);
-      str = "";
-    }
-  }
-  splitStr.push(str);
-  return splitStr;
-}
-
-export default class ProtocolRandomAI {
+export default class RandomAIAgent extends BattleAgent {
   protected readonly move: number;
   protected readonly mega: number;
   protected readonly prng: PRNG;
-  protected readonly side: PlayerSide;
   protected readonly nFormat: Exclude<NPokemonsFormat, 3>;
-  protected readonly playerStream: ObjectReadWriteStream<string>;
 
   constructor(
-    side: PlayerSide,
     playerStream: ObjectReadWriteStream<string>,
     options: {
       move?: number;
@@ -56,9 +27,8 @@ export default class ProtocolRandomAI {
       throw new Error("Tripple Battle not supported");
     }
 
-    this.playerStream = playerStream;
+    super(playerStream);
     this.nFormat = options.nFormat || 1;
-    this.side = side;
     this.move = options.move || 1.0;
     this.mega = options.mega || 0;
     this.prng =
@@ -67,37 +37,7 @@ export default class ProtocolRandomAI {
         : new PRNG(options.seed);
   }
 
-  async start() {
-    for await (const chunk of this.playerStream) {
-      this.receive(chunk);
-    }
-  }
-
-  receive(chunk: string) {
-    for (const line of chunk.split("\n")) {
-      this.receiveLine(line);
-    }
-  }
-
-  receiveLine(line: string) {
-    if (!line.startsWith("|")) return;
-    const [cmd, rest] = splitFirst(line.slice(1), "|");
-    if (cmd === "error") return this.processError(new Error(rest));
-
-    if (cmd === "request" && rest) {
-      const output = this.processRequest(JSON.parse(rest));
-      if (output) this.playerStream.write(output);
-    }
-  }
-
-  private processError(error: Error) {
-    // If we made an unavailable choice we will receive a followup request to
-    // allow us the opportunity to correct our decision.
-    if (error.message.startsWith("[Unavailable choice]")) return;
-    throw error;
-  }
-
-  private processRequest(request: AnyObject): string | undefined {
+  protected processRequest(request: AnyObject): string | undefined {
     if (request.wait) return;
     if (request.forceSwitch) return this.onForceSwitch(request);
     if (request.active) return this.onActive(request);
@@ -129,7 +69,6 @@ export default class ProtocolRandomAI {
         if (switchSlotOptions.length === 0) return;
 
         const target = this.chooseSwitch(
-          request.active,
           switchSlotOptions.map((slot) => ({
             slot,
             pokemon: pokemon[slot - 1],
@@ -150,11 +89,11 @@ export default class ProtocolRandomAI {
         : ProtocolWritter.choosePass();
     }
 
-    return ProtocolWritter.doublesFormatChoice(
-      ...([firstChoice, secondChoice].map((choice) => {
+    return ProtocolWritter.join(
+      ...[firstChoice, secondChoice].map((choice) => {
         if (!choice) return ProtocolWritter.choosePass();
         return ProtocolWritter.chooseSwitch(choice);
-      }) as [string, string])
+      })
     );
   }
 
@@ -271,7 +210,6 @@ export default class ProtocolRandomAI {
 
       if (switches.length && (!moves.length || this.prng.next() > this.move)) {
         const target = this.chooseSwitch(
-          active,
           canSwitch.map((slot) => ({ slot, pokemon: pokemon[slot - 1] }))
         );
         chosen.push(target);
@@ -315,26 +253,17 @@ export default class ProtocolRandomAI {
       return firstChoice || ProtocolWritter.choosePass();
     }
 
-    return ProtocolWritter.doublesFormatChoice(
+    return ProtocolWritter.join(
       firstChoice || ProtocolWritter.choosePass(),
       secondChoice || ProtocolWritter.choosePass()
     );
   }
 
-  private handleOtherRequest(request: AnyObject): string {
-    return this.chooseTeamPreview(request.side.pokemon);
-  }
-
-  protected chooseTeamPreview(_team: AnyObject[]): string {
+  private handleOtherRequest(_request: AnyObject): string {
     return "default";
   }
 
-  protected chooseMove(_active: AnyObject, moves: any[]): string {
-    return this.prng.sample(moves).choice;
-  }
-
   protected chooseSwitch(
-    _active: AnyObject | undefined,
     switches: { slot: number; pokemon: AnyObject }[]
   ): number {
     return this.prng.sample(switches).slot;
